@@ -7,7 +7,17 @@ import java.math.BigDecimal;
  * @since 27.10.13 22:57
  */
 public class User {
-    String id;
-    String name;
-    BigDecimal balance;
+    private String name;
+
+    public User(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

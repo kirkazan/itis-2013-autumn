@@ -5,5 +5,10 @@ package ru.kirkazan.itis.poker.game;
  * @since 28.10.13 0:34
  */
 public class Hand {
+
     private User user;
+
+    public Hand(User user) {
+        this.user = user;
+    }
 }
