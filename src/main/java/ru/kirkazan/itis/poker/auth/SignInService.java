@@ -10,11 +10,8 @@ public class SignInService {
 
     public User singIn(SignInForm signInForm) {
 
-        User user = getUserStorage().getUser(signInForm.username, signInForm.password);
+        User user = userStorage.getUser(signInForm.username, signInForm.password);
         return user;
     }
 
-    UserStorage getUserStorage() {
-        return userStorage;
-    }
 }

@@ -8,10 +8,13 @@ import java.util.List;
  */
 public class Table {
 
+    /*
+    todo
+    Количество рук за столом не превышает 9. Необходимо реализовать на уровне модели и отразить в тестах
+     */
+
     public static final int SIZE = 9;
 
-    String id;
-    List<User> users;
     private List<Hand> hands;
 
     public List<Hand> getHands() {

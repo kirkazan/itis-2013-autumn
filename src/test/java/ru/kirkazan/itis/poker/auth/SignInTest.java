@@ -3,21 +3,30 @@ package ru.kirkazan.itis.poker.auth;
 import static junit.framework.TestCase.*;
 import static org.mockito.Mockito.*;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Spy;
+import org.mockito.runners.MockitoJUnitRunner;
 
 
 /**
  * @author esadykov
  * @since 27.10.13 23:06
  */
+@RunWith(MockitoJUnitRunner.class)
 public class SignInTest {
+
+    @InjectMocks
+    private SignInService signInService = new SignInService();
+
+    @Mock
+    private UserStorage userStorage;
 
     @Test
     public void signIn(){
 
-        SignInForm signInForm = mock(SignInForm.class);
-        SignInService signInService = spy(new SignInService());
-        UserStorage userStorage = mock(UserStorage.class);
-        when(signInService.getUserStorage()).thenReturn(userStorage);
+        SignInForm signInForm = new SignInForm();
 
         User resultUser;
         User forResultUser = new User();

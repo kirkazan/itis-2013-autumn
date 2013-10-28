@@ -11,19 +11,17 @@ public class GameService {
     private Table table = new Table();
 
     public JoinResult join(User user) {
+        Integer index = getFirstSpace();
+        if (index == null)
+            return JoinResult.IN_QUEUE;
         return JoinResult.SUCCESS;
     }
 
-    public Integer getFirstSpace() {
+    protected Integer getFirstSpace() {
         for (int i = 0; i < Table.SIZE; i++) {
-            if (getTable().getHands().get(i) == null)
+            if (table.getHands().get(i) == null)
                 return i;
         }
-
         return null;
-    }
-
-    Table getTable() {
-        return table;
     }
 }
