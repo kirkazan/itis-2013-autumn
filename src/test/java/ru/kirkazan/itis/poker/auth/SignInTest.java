@@ -41,5 +41,11 @@ public class SignInTest {
 
         verify(userStorage, times(2)).getUser(signInForm.username, signInForm.password);
         assertNull(resultUser);
+
+        /*
+        todo
+
+        Не искать в базе при пустых значениях имени пользователя или пароля
+         */
     }
 }
