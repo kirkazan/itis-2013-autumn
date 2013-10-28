@@ -51,7 +51,7 @@ public class SignInTest {
         signInForm.password = "";
 
         signInService.singIn(signInForm);
-        verify(userStorage, times(2)).getUser(signInForm.username, signInForm.password);
+        verify(userStorage, never()).getUser(signInForm.username, signInForm.password);
 
     }
 }
