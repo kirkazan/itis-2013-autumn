@@ -12,8 +12,16 @@ public class GameService {
 
     public JoinResult join(User user) {
         Integer index = getFirstSpace();
-        if (index == null)
+        if (index == null) {
+               /*
+               проверяем, есть ли наш игрок уже за столом
+               если так, то возвращаем SUCCESS, иначе ставим в очередь
+                */
+            if (table.getHands().contains(user.getName())){
+                return JoinResult.SUCCESS;
+            }
             return JoinResult.IN_QUEUE;
+        }
         return JoinResult.SUCCESS;
     }
 

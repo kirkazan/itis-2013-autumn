@@ -39,12 +39,11 @@ public class GameTest {
         when(table.getHands()).thenReturn(getPopulatedHands(new Hand(user)));
         result = gameService.join(user);
         assertEquals(JoinResult.IN_QUEUE, result);
-        verify(gameService, times(1)).getFirstSpace();
 
         when(table.getHands()).thenReturn(getPopulatedHands((Hand) null));
         result = gameService.join(user);
         assertEquals(JoinResult.SUCCESS, result);
-        verify(gameService, times(2)).getFirstSpace();
+
 
         /*
         todo
@@ -62,19 +61,11 @@ public class GameTest {
         result = gameService.join(existingUser);
         assertEquals(JoinResult.SUCCESS, result);
 
-        when(table.getHands()).thenReturn(getPopulatedHands(new Hand(user),new Hand(user),new Hand(user),new Hand(user)
-                ,new Hand(user),new Hand(user),new Hand(user),new Hand(existingUser),new Hand(user)));
+        when(table.getHands()).thenReturn(getPopulatedHands(new Hand(user),new Hand(existingUser),new Hand(user),new Hand(user)
+                ,new Hand(user),new Hand(user),new Hand(user),new Hand(user),new Hand(user)));
         result = gameService.join(existingUser);
         assertEquals(JoinResult.SUCCESS, result);
 
-    }
-
-    private List<Hand> getPopulatedHands(Hand hand) {
-        List<Hand> hands = new ArrayList<Hand>(Table.SIZE);
-        for (int i = 0; i < Table.SIZE; i++) {
-            hands.add(hand);
-        }
-        return hands;
     }
 
     private List<Hand> getPopulatedHands(Hand... ahands) {
